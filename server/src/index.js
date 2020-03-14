@@ -1,11 +1,18 @@
-const middlewares = require('./middlewares')
 const express = require('express')
 const morgan = require('morgan')
 const helmet = require('helmet')
 const cors = require('cors')
+const mongoose = require('mongoose')
+require('dotenv').config()
+
+const middlewares = require('./middlewares')
 
 const app = express()
 
+mongoose.connect(`${process.env.DATABASE_URL}`, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true
+})
 app.use(morgan('common'))
 app.use(helmet())
 
@@ -20,7 +27,6 @@ app.get('/', (req, res) => {
 })
 
 app.use(middlewares.notFound)
-
 app.use(middlewares.errorHandler)
 
 const port = process.env.PORT || 5000
