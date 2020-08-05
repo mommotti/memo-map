@@ -3,6 +3,7 @@ const morgan = require('morgan')
 const helmet = require('helmet')
 const cors = require('cors')
 const mongoose = require('mongoose')
+const logs = require('./api/logs')
 require('dotenv').config()
 
 const middlewares = require('./middlewares')
@@ -13,8 +14,15 @@ mongoose.connect(`${process.env.DATABASE_URL}`, {
     useUnifiedTopology: true,
     useNewUrlParser: true
 })
+
+mongoose.connection.once('open', function () {
+    console.log('Connected to the DB!🎉')
+});
+
 app.use(morgan('common'))
 app.use(helmet())
+app.use(helmet.hidePoweredBy())
+app.use(express.json())
 
 app.use(cors({
     origin: 'http://localhost:3000'
@@ -26,10 +34,12 @@ app.get('/', (req, res) => {
     })
 })
 
+app.use('/api/logs', logs)
+
+// If a request makes it all the way to here, it means the rout hasn't been found
 app.use(middlewares.notFound)
 app.use(middlewares.errorHandler)
 
 const port = process.env.PORT || 5000
 
 app.listen(port, () => console.log(`❗Server started at http://localhost:${port} ❗`))
-// 40:55
