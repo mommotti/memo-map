@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import { listLogEntries } from './API'
+import LogEntryForm from './components/LogEntryForm'
 const App = () => {
   const [logEntries, setLogEntries] = useState([])
   const [showPopup, setShowPopup] = useState({})
@@ -13,16 +14,18 @@ const App = () => {
     zoom: 4
   });
 
+  const getEntries = async () => {
+    const logEntries = await listLogEntries()
+    setLogEntries(logEntries)
+  }
+
   useEffect(() => { //loads only once
     (async () => {
-      const logEntries = await listLogEntries()
-      setLogEntries(logEntries)
-      console.log(logEntries)
+      getEntries()
     })()
   }, [])
 
   const showAddMarkerPopup = (event) => {
-    console.log(event)
     const [longitude, latitude] = event.lngLat
     setAddEntryLocation({
       latitude,
@@ -40,7 +43,7 @@ const App = () => {
     >
       {
         logEntries.map(entry => (
-          <>
+          <React.Fragment key={entry._id}>
             <Marker
               key={entry._id}
               latitude={entry.latitude}
@@ -56,9 +59,9 @@ const App = () => {
                   height="24"
                   viewBox="0 0 24 24"
                   fill="none"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 >
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
               </div>
@@ -77,12 +80,13 @@ const App = () => {
                     <h3>{entry.title}</h3>
                     <p>{entry.comments}</p>
                     <small>Visited on:{new Date(entry.visitDate).toLocaleDateString()}</small>
+                    {entry.image ? <img src={entry.image} alt={entry.title} /> : null}
                   </div>
                 </Popup>
-              )  // 3:12
+              )
                 : null
             }
-          </>
+          </React.Fragment>
         ))
       }
       {
@@ -99,9 +103,9 @@ const App = () => {
                   height="24"
                   viewBox="0 0 24 24"
                   fill="none"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 >
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
               </div>
@@ -115,7 +119,13 @@ const App = () => {
               onClose={() => setAddEntryLocation(null)}
               anchor="top" >
               <div className="popup">
-                <h3>Add your new log entry</h3>
+                <LogEntryForm
+                  onClose={() => {
+                    setAddEntryLocation(null)
+                    getEntries()
+                  }}
+                  location={addEntryLocation}
+                />
               </div>
             </Popup>
           </>
