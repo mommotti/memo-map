@@ -22,7 +22,8 @@ const App = () => {
   }, [])
 
   const showAddMarkerPopup = (event) => {
-    const [longitude, latitude] = event.lnglat
+    console.log(event)
+    const [longitude, latitude] = event.lngLat
     setAddEntryLocation({
       latitude,
       longitude
@@ -44,15 +45,13 @@ const App = () => {
               key={entry._id}
               latitude={entry.latitude}
               longitude={entry.longitude}
-            // offsetLeft={-12}
-            // offsetTop={-40}
             >
               <div
                 onClick={() => setShowPopup({
                   [entry._id]: true,
                 })}
               >
-                <svg className="pin"
+                <svg className="pin yellow"
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
@@ -89,6 +88,24 @@ const App = () => {
       {
         addEntryLocation ? (
           <>
+            <Marker
+              latitude={addEntryLocation.latitude}
+              longitude={addEntryLocation.longitude}
+            >
+              <div
+              >
+                <svg className="pin red"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              </div>
+            </Marker>
             <Popup
               latitude={addEntryLocation.latitude}
               longitude={addEntryLocation.longitude}
