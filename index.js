@@ -24,16 +24,11 @@ app.use(morgan('common'))
 app.use(helmet())
 app.use(helmet.hidePoweredBy())
 app.use(express.json())
-
 app.use(cors({
     origin: 'http://localhost:3000'
 }))
 
-app.get('/', (req, res) => {
-    res.json({
-        message: 'Hello World!'
-    })
-})
+
 
 app.use('/api/logs', logs)
 
@@ -41,6 +36,7 @@ if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'))
     app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html')))
 }
+
 // If a request makes it all the way   to here, it means the rout hasn't b een found
 app.use(middlewares.notFound)
 app.use(middlewares.errorHandler)
