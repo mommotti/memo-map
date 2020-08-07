@@ -16,8 +16,8 @@
     "nodemon": "^2.0.2"
   },
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
+    "start": "node index",
+    "dev": "nodemon index",
     "lint": "eslint src/"
   },
   "repository": {
