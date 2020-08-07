@@ -36,7 +36,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/logs', logs)
 
-// If a request makes it all the way to here, it means the rout hasn't b een found
+// If a request makes it all the way  to here, it means the rout hasn't b een found
 app.use(middlewares.notFound)
 app.use(middlewares.errorHandler)
 
