@@ -16,7 +16,7 @@ const limiter = new RateLimit({
     windowMs: rateLimitDelay
 });
 
-
+// GET ALL
 router.get('/', async (req, res, next) => {
     try {
         const entries = await LogEntry.find()
@@ -25,6 +25,28 @@ router.get('/', async (req, res, next) => {
         next(error)
     }
 })
+
+//DELETE ONE
+router.delete('/:id', async (req, res, next) => {
+    try {
+        const pin = await LogEntry.findById(req.params.id)
+        if (!pin) {
+            return res.status(404).json({
+                success: false,
+                error: "An error has occurred, please refresh the page and retry"
+            })
+        }
+        await pin.remove()
+        res.status(200).json({
+            success: true,
+            data: {}
+        })
+    } catch (error) {
+        next(error)
+    }
+})
+
+//POST ONE
 router.post('/', limiter, async (req, res, next) => {
     try {
         if (req.get('X-API-KEY') !== process.env.API_KEY) {
