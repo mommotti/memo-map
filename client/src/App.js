@@ -36,6 +36,7 @@ const App = () => {
   }
 
   return (
+
     <ReactMapGL
       {...viewport}
       mapStyle="mapbox://styles/mapbox/dark-v10"
@@ -43,6 +44,16 @@ const App = () => {
       onViewportChange={setViewport}
       onDblClick={showAddMarkerPopup}
     >
+      <div className="header">
+        <h2 className="logo">memo-map</h2>
+        <div class="container">
+          <div class="inner"> <span>i</span>
+            <h4>Tip:</h4>
+            <p>Double click/tap to add a new pin.</p>
+          </div>
+        </div>
+
+      </div>
       {
         logEntries.map(entry => (
           <React.Fragment key={entry._id}>
