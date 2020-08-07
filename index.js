@@ -4,6 +4,7 @@ const helmet = require('helmet')
 const cors = require('cors')
 const mongoose = require('mongoose')
 const logs = require('./api/logs')
+const path = require('path')
 require('dotenv').config()
 
 const middlewares = require('./middlewares')
