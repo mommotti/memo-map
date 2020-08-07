@@ -3,10 +3,10 @@ const morgan = require('morgan')
 const helmet = require('helmet')
 const cors = require('cors')
 const mongoose = require('mongoose')
-const logs = require('./api/logs')
+const logs = require('./server/src/api/logs')
 require('dotenv').config()
 
-const middlewares = require('./middlewares')
+const middlewares = require('.//server/src/middlewares')
 
 const app = express()
 
@@ -41,8 +41,8 @@ app.use(middlewares.notFound)
 app.use(middlewares.errorHandler)
 
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('../../client/build'))
-    app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, '../../client/build/index.html')))
+    app.use(express.static('./client/build'))
+    app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, './client/build/index.html')))
 }
 
 
