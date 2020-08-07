@@ -1,8 +1,21 @@
 const { Router } = require('express')
-
+const RateLimit = require('express-rate-limit');
+const MongoStore = require('rate-limit-mongo');
 const LogEntry = require('../models/LogEntry')
+require('dotenv').config()
 
 const router = Router()
+
+const rateLimitDelay = 10 * 1000; // 10 second delay
+const limiter = new RateLimit({
+    store: new MongoStore({
+        uri: process.env.DATABASE_URL,
+        expireTimeMs: rateLimitDelay,
+    }),
+    max: 1,
+    windowMs: rateLimitDelay
+});
+
 
 router.get('/', async (req, res, next) => {
     try {
@@ -12,7 +25,7 @@ router.get('/', async (req, res, next) => {
         next(error)
     }
 })
-router.post('/', async (req, res, next) => {
+router.post('/', limiter, async (req, res, next) => {
     try {
         if (req.get('X-API-KEY') !== process.env.API_KEY) {
             res.status(401);

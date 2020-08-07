@@ -11,13 +11,15 @@ const middlewares = require('./middlewares')
 
 const app = express()
 
+app.enable('trust proxy'); //rate limiting by Client IP
+
 mongoose.connect(`${process.env.DATABASE_URL}`, {
     useUnifiedTopology: true,
     useNewUrlParser: true
 })
 
 mongoose.connection.once('open', function () {
-    console.log('Connected to the DB!🎉')
+    console.log('🎉Connected to the DB!🎉')
 });
 
 app.use(morgan('common'))
