@@ -1,0 +1,30 @@
+{
+  "name": "travel-log",
+  "version": "1.0.0",
+  "description": "2:18 XDXDXD",
+  "main": "index.js",
+  "dependencies": {
+    "make-dir": "^3.1.0",
+    "react-hook-form": "^6.3.0",
+    "responselike": "^1.0.2",
+    "semver": "^6.3.0",
+    "semver-diff": "^3.1.1",
+    "signal-exit": "^3.0.3",
+    "source-map": "^0.6.1",
+    "source-map-support": "^0.5.19"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mommotti/memo-map.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mommotti/memo-map/issues"
+  },
+  "homepage": "https://github.com/mommotti/memo-map#readme"
+}
