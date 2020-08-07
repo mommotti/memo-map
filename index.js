@@ -3,10 +3,10 @@ const morgan = require('morgan')
 const helmet = require('helmet')
 const cors = require('cors')
 const mongoose = require('mongoose')
-const logs = require('./server/src/api/logs')
+const logs = require('./api/logs')
 require('dotenv').config()
 
-const middlewares = require('.//server/src/middlewares')
+const middlewares = require('./middlewares')
 
 const app = express()
 
