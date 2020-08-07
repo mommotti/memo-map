@@ -32,3 +32,12 @@ export async function createLogEntry(entry) {
     error.response = json;
     throw error;
 }
+
+export async function deleteLogEntry(id) {
+    fetch(`${API_URL}/api/logs/${id}`, {
+        method: 'DELETE',
+    })
+        .then(res => res.text()) // or res.json()
+        .then(res => console.log(res))
+}
+

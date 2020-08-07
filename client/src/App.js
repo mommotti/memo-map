@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
-import { listLogEntries } from './API'
+import { listLogEntries, deleteLogEntry } from './API'
 import LogEntryForm from './components/LogEntryForm'
+
 const App = () => {
+
   const [logEntries, setLogEntries] = useState([])
   const [showPopup, setShowPopup] = useState({})
   const [addEntryLocation, setAddEntryLocation] = useState(null)
@@ -77,6 +79,11 @@ const App = () => {
                   onClose={() => setShowPopup({})}
                   anchor="top" >
                   <div className="popup">
+                    <button onClick={async () => {
+                      await deleteLogEntry(entry._id)
+                      setShowPopup({})
+                      await getEntries()
+                    }}>delete pin</button>
                     <h3>{entry.title}</h3>
                     <p>{entry.comments}</p>
                     <small>Visited on:{new Date(entry.visitDate).toLocaleDateString()}</small>
@@ -86,7 +93,7 @@ const App = () => {
               )
                 : null
             }
-          </React.Fragment>
+          </React.Fragment >
         ))
       }
       {
