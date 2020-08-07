@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5000'
+const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:5000' : 'https://memo-map-mf.herokuapp.com'
 
 export async function listLogEntries() {
     const response = await fetch(`${API_URL}/api/logs`)
