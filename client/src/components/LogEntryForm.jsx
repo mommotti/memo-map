@@ -23,7 +23,7 @@ const LogEntryForm = ({ location, onClose }) => {
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="entry-form">
+        <form autocomplete="off" onSubmit={handleSubmit(onSubmit)} className="entry-form">
             {error ? <h3 className="error">{error}</h3> : null}
             <label htmlFor="apiKey">API KEY</label>
             <input type="password" name="apiKey" required ref={register} />
@@ -33,7 +33,7 @@ const LogEntryForm = ({ location, onClose }) => {
             <textarea name="comments" rows={3} ref={register}></textarea>
             <label htmlFor="description">Description</label>
             <input name="description" ref={register} />
-            <label htmlFor="image">Image</label>
+            <label htmlFor="image">Image <small>(url)</small></label>
             <input name="image" ref={register} />
             <label htmlFor="visitDate">Visit Date</label>
             <input name="visitDate" type="date" ref={register} required />

@@ -79,15 +79,18 @@ const App = () => {
                   onClose={() => setShowPopup({})}
                   anchor="top" >
                   <div className="popup">
-                    <button onClick={async () => {
+                    <h3>{entry.title}</h3>
+                    <hr></hr>
+                    <p>{entry.comments}</p>
+                    <hr></hr>
+                    <small>Visited on: {new Date(entry.visitDate).toLocaleDateString()}</small>
+                    <hr></hr>
+                    {entry.image ? <img className="image" src={entry.image} alt={entry.title} /> : null}
+                    <button className="delete" onClick={async () => {
                       await deleteLogEntry(entry._id)
                       setShowPopup({})
                       await getEntries()
                     }}>delete pin</button>
-                    <h3>{entry.title}</h3>
-                    <p>{entry.comments}</p>
-                    <small>Visited on:{new Date(entry.visitDate).toLocaleDateString()}</small>
-                    {entry.image ? <img src={entry.image} alt={entry.title} /> : null}
                   </div>
                 </Popup>
               )

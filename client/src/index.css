@@ -1,8 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Noto Sans', sans-serif;
     height: 100vh;
     width: 100vw;
     overflow: hidden;
@@ -21,25 +20,72 @@ body {
   color:#f82702;
 }
 .popup{
-  z-index: 2;
   max-width:40vw;
-  padding: 1rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  cursor: default;
+  padding: 5px;
 }
 .popup img{
   height: 200px;
   width: auto;
   text-align: center;
   margin: 0 auto;
+  width: 100%;
   display: block ;
-}
+  align-self: center;
+  object-fit: cover;
 
+}
+hr{
+  width: 100px;
+
+}
 .entry-form label, 
 .entry-form input,
  .entry-form textarea, 
  .entry-form button {
-   font-size: 1rem;
-  margin: 0.5rem 0;
-  display: block;
+  padding: 3px;
+  font-family: 'Noto Sans', sans-serif;
+}  
+.entry-form textarea{
   width: 100%;
 }
+  .entry-form{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  .entry-form button{
+    margin-top: 15px;
+  }
+.delete{
+  border: none;
+  color: red;
+  border: 1px solid#f82702;
+  border-radius: 8px;
+  background: white;
+  margin-top: 10px;
+  width: 60px;
+  height: 15px;
+  font-size: 0.7em;
+  cursor: pointer;
+  padding: 0;
+}
+.mapboxgl-popup-close-button{
+  color: #000;
+  height: 25px;
+  width: 25px;
+  padding: 0;
+}
+@media only screen and (max-width: 600px) {
 
+  /* .mapboxgl-popup-content{
+    width: 190px;
+    min-height:320px;
+} */
+}
