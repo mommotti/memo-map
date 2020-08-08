@@ -45,17 +45,17 @@ const App = () => {
       onDblClick={showAddMarkerPopup}
     >
       <div className="header">
+        <div class="info_box">
+          <i class="fa fa-info-circle">
+            <div class="message">
+              Double click/tap onto a location to add a new pin.📍
+            </div>
+          </i>
+        </div>
         <div className="logo-wrapper">
           <h2 className="logo">memo-map</h2>
           <span className="matteo"> by Matteo Fenu</span>
         </div>
-        <div class="container">
-          <div class="inner"> <span>i</span>
-            <h4>Tip:</h4>
-            <p>Double click/tap to add a new pin.</p>
-          </div>
-        </div>
-
       </div>
       {
         logEntries.map(entry => (
