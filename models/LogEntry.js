@@ -13,7 +13,6 @@ const logEntrySchema = new Schema({
         required: true,
     },
     description: String,
-    comments: String,
     image: String,
     rating: {
         type: Number,

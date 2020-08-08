@@ -53,7 +53,7 @@ const App = () => {
           </i>
         </div>
         <div className="logo-wrapper">
-          <h2 className="logo">memo-map</h2>
+          <h3 className="logo">memo-map</h3>
           <span className="matteo"> by Matteo Fenu</span>
         </div>
       </div>
@@ -95,7 +95,7 @@ const App = () => {
                   <div className="popup">
                     <h3>{entry.title}</h3>
                     <hr></hr>
-                    <p>{entry.comments}</p>
+                    <p>{entry.description}</p>
                     <hr></hr>
                     <small>Visited on: {new Date(entry.visitDate).toLocaleDateString()}</small>
                     <hr></hr>

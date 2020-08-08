@@ -27,7 +27,7 @@ body {
   color:#f82702;
 }
 .popup{
-  max-width:40vw;
+  max-width:350px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -61,7 +61,7 @@ hr{
   font-family: 'Noto Sans', sans-serif;
 }  
 .entry-form textarea{
-  width: 100%;
+  max-width: 100%;
 }
   .entry-form{
     width: 100%;
@@ -85,21 +85,23 @@ hr{
   }
   .header{
     padding:5px;
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: space-between;
   }
   .logo-wrapper{
-    padding-right: 20px;
+    padding:5px 10px 0 0;
     color: white;
     opacity: 0.4;
   }
   .logo{
+    line-height: 0px;
     margin:0;
+    margin-bottom:2px
   }
+
   .matteo{
-    margin:0;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
   }
   /* INFO */
 
@@ -110,6 +112,7 @@ hr{
 
   .fa{
     color: black;
+    padding-left:2px;
   }
   .info_box .message {
     font-family: 'Noto Sans', sans-serif;
@@ -133,7 +136,7 @@ hr{
   @keyframes tooltip {
     from{
     }to{
-      transform: translateX(-5px);
+      transform: translateX(-7px);
     }
   }
 .delete{
@@ -165,7 +168,13 @@ a.mapboxgl-ctrl-logo:hover{
   opacity: 1;
 }
 @media only screen and (max-width: 600px) {
-  .inner{
-    opacity: 0.4;
+  .popup img{
+    max-height: 150px;
+
+    max-width: 150px;
+
+  }
+  .popup{
+    max-width: 300px;
   }
 }
