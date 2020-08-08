@@ -12,12 +12,16 @@ body {
 
 .pin{
   transform: translate(-50%,-100%);
+  stroke-width:1;
+
+}
+.add{
+  stroke:rgb(255, 116, 116);
+  fill: red;
 }
 .red{
-  stroke:#61e7ff;
-}
-.yellow{
-  stroke:#f8c102;
+  stroke:#f82702;
+  fill: rgba(248, 39, 2,0.5);
 }
 .error{
   color:#f82702;
@@ -31,15 +35,18 @@ body {
   padding: 5px;
 }
 .popup img{
-  height: 200px;
+  max-height: 250px;
   width: auto;
   text-align: center;
   margin: 0 auto;
-  width: 100%;
+  max-width: 250px;
   display: block ;
   align-self: center;
   object-fit: cover;
+}
 
+.popup p,h3{
+  margin: 0;
 }
 hr{
   width: 100px;
@@ -49,6 +56,7 @@ hr{
 .entry-form input,
  .entry-form textarea, 
  .entry-form button {
+  resize: none;
   padding: 3px;
   font-family: 'Noto Sans', sans-serif;
 }  
@@ -65,32 +73,45 @@ hr{
   }
   .entry-form button{
     margin-top: 15px;
+    background: white;
+    border: 1px solid black;
+    border-radius: 8px;
   }
-  
+  .entry-form button:hover{
+    background: rgb(68, 68, 68);
+    border: 1px solid white;
+    color: white;
+    cursor: pointer;
+  }
   .header{
     width: 100vw;
     display: flex;
     justify-content: space-between;
   }
-
-  .logo{
-    margin:0;
+  .logo-wrapper{
     padding: 5px;
     color: white;
-    opacity: 0.3;
+    opacity: 0.4;
   }
-
+  .logo{
+    margin:0;
+  }
+  .matteo{
+    margin:0;
+    font-size: 0.8rem;
+  }
   /* INFO */
 
  .container{
   padding: 0.2em 0.2em 0 0;
  }
 .inner {
+  margin-top: 5px;
   opacity: 0.8;
   background: #3a3a3a;
   border: 1px dotted #3a3a3a;
 
-  padding: 1em ;
+  padding: 0.8em ;
   border-radius: 10px;
   width: 250px;
   clip-path: circle(10% at 90% 20%);
@@ -103,7 +124,6 @@ hr{
   border: 1px dotted #909090;
 }
 .inner h4 {
-  
   color: white;
   margin:0;
   margin-bottom: 1em;
@@ -131,7 +151,7 @@ hr{
   border: 1px solid#f82702;
   border-radius: 8px;
   background: white;
-  margin-top: 10px;
+  margin-top: 20px;
   width: 60px;
   height: 15px;
   font-size: 0.7em;
@@ -154,7 +174,9 @@ a.mapboxgl-ctrl-logo:hover{
   opacity: 1;
 }
 @media only screen and (max-width: 600px) {
-
+  /* .logo{
+    font-size: 1rem; */
+  /* } */
   /* .mapboxgl-popup-content{
     width: 190px;
     min-height:320px;

@@ -39,13 +39,16 @@ const App = () => {
 
     <ReactMapGL
       {...viewport}
-      mapStyle="mapbox://styles/mapbox/dark-v10"
+      mapStyle="mapbox://styles/mapbox/streets-v11"
       mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
       onViewportChange={setViewport}
       onDblClick={showAddMarkerPopup}
     >
       <div className="header">
-        <h2 className="logo">memo-map</h2>
+        <div className="logo-wrapper">
+          <h2 className="logo">memo-map</h2>
+          <span className="matteo"> by Matteo Fenu</span>
+        </div>
         <div class="container">
           <div class="inner"> <span>i</span>
             <h4>Tip:</h4>
@@ -67,7 +70,7 @@ const App = () => {
                   [entry._id]: true,
                 })}
               >
-                <svg className="pin yellow"
+                <svg className="pin red"
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
@@ -119,7 +122,7 @@ const App = () => {
             >
               <div
               >
-                <svg className="pin red"
+                <svg className="pin add"
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
