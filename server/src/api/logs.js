@@ -14,7 +14,8 @@ router.get('/', async (req, res, next) => {
 })
 router.post('/', async (req, res, next) => {
     try {
-        if (req.get('X-API-KEY') !== process.env.API_KEY) {
+        // if (req.get('X-API-KEY') !== process.env.API_KEY) {
+        if (req.get('X-API-KEY') !== "memomap") {
             res.status(401);
             throw new Error('UnAuthorized');
         }

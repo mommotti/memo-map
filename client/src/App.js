@@ -6,14 +6,15 @@ const App = () => {
   const [logEntries, setLogEntries] = useState([])
   const [showPopup, setShowPopup] = useState({})
   const [addEntryLocation, setAddEntryLocation] = useState(null)
+
   const [viewport, setViewport] = useState({
     width: '100vw',
     height: '100vh',
     latitude: 40.11,
     longitude: -100.99,
-    zoom: 4
+    zoom: 4,
+    
   });
-
   const getEntries = async () => {
     const logEntries = await listLogEntries()
     setLogEntries(logEntries)
@@ -36,8 +37,9 @@ const App = () => {
   return (
     <ReactMapGL
       {...viewport}
-      mapStyle="mapbox://styles/mapbox/dark-v10"
-      mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+      mapStyle="mapbox://styles/mommotti/cklar8rv50q2917qr8t9ylx74"
+      // mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+      mapboxApiAccessToken="pk.eyJ1IjoibW9tbW90dGkiLCJhIjoiY2s4bzZiZWduMDU5ajNsbWYzODI5dDczdCJ9.XDeVCGyJTetl96idm7MPww"
       onViewportChange={setViewport}
       onDblClick={showAddMarkerPopup}
     >
