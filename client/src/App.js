@@ -7,13 +7,17 @@ const App = () => {
   const [showPopup, setShowPopup] = useState({})
   const [addEntryLocation, setAddEntryLocation] = useState(null)
 
-  const [viewport, setViewport] = useState({
+  const [viewport, setViewport] = React.useState({
     width: '100vw',
     height: '100vh',
-    latitude: 40.11,
-    longitude: -100.99,
-    zoom: 4,
-    
+    latitude: 37.7577, // Initial latitude
+    longitude: -122.4376, // Initial longitude
+    zoom: 10, // Initial zoom level
+    maxBounds: [
+      // Define the maximum bounds for panning
+      [43.6523, 11.7871], // Southwest corner of the bounding box
+      [42.3498, 13.3995], // Northeast corner of the bounding box
+    ],
   });
   const getEntries = async () => {
     const logEntries = await listLogEntries()
@@ -45,7 +49,6 @@ useEffect(() => {
   return (
     <ReactMapGL
       {...viewport}
-      mapPosition={[90,-20]}
       mapStyle="mapbox://styles/mommotti/clmf8e3uv01h201r7db52186u"
       // mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
       mapboxApiAccessToken="pk.eyJ1IjoibW9tbW90dGkiLCJhIjoiY2s4bzZiZWduMDU5ajNsbWYzODI5dDczdCJ9.XDeVCGyJTetl96idm7MPww"
