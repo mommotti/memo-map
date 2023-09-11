@@ -1,7 +1,9 @@
-const API_URL = 'http://localhost:5000'
+// const API_URL = 'http://localhost:5000'
+const API_URL = 'https://jjwyqm-5000.csb.app'
 
 export async function listLogEntries() {
     const response = await fetch(`${API_URL}/api/logs`)
+    console.log(response.json())
     return response.json()
 }
 export async function createLogEntry(entry) {
