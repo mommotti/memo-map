@@ -1,11 +1,12 @@
-// const API_URL = 'http://localhost:5000'
-const API_URL = 'https://jjwyqm-5000.csb.app'
+const API_URL = 'http://localhost:5000'
 
 export async function listLogEntries() {
-    const response = await fetch(`${API_URL}/api/logs`)
-    console.log(response.json())
-    return response.json()
+    const response = await fetch(`${API_URL}/api/logs`);
+    const data = await response.json(); // Await and assign the response data
+    console.log(data);
+    return data;
 }
+
 export async function createLogEntry(entry) {
     const apiKey = entry.apiKey
     delete entry.apiKey

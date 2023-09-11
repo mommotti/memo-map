@@ -25,7 +25,15 @@ const App = () => {
       getEntries()
     })()
   }, [])
-
+useEffect(() => {
+    navigator.geolocation.getCurrentPosition(pos => {
+      setViewport({
+        ...viewport,
+        latitude: pos.coords.latitude,
+        longitude: pos.coords.longitude
+      });
+    });
+  }, []);
   const showAddMarkerPopup = (event) => {
     const [longitude, latitude] = event.lngLat
     setAddEntryLocation({
@@ -37,7 +45,8 @@ const App = () => {
   return (
     <ReactMapGL
       {...viewport}
-      mapStyle="mapbox://styles/mommotti/cklar8rv50q2917qr8t9ylx74"
+      mapPosition={[90,-20]}
+      mapStyle="mapbox://styles/mommotti/clmf8e3uv01h201r7db52186u"
       // mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
       mapboxApiAccessToken="pk.eyJ1IjoibW9tbW90dGkiLCJhIjoiY2s4bzZiZWduMDU5ajNsbWYzODI5dDczdCJ9.XDeVCGyJTetl96idm7MPww"
       onViewportChange={setViewport}
@@ -80,8 +89,8 @@ const App = () => {
                   anchor="top" >
                   <div className="popup">
                     <h3>{entry.title}</h3>
+                    <h5>{entry.description}</h5>
                     <p>{entry.comments}</p>
-                    <small>Visited on:{new Date(entry.visitDate).toLocaleDateString()}</small>
                     {entry.image ? <img src={entry.image} alt={entry.title} /> : null}
                   </div>
                 </Popup>

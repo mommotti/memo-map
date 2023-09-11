@@ -15,7 +15,7 @@ body {
   stroke:#61e7ff;
 }
 .yellow{
-  stroke:#f8c102;
+  stroke:#f80202;
 }
 .error{
   color:#f82702;
@@ -24,6 +24,7 @@ body {
   z-index: 2;
   max-width:40vw;
   padding: 1rem;
+  border: 2px solid rgb(255, 243, 187);
 }
 .popup img{
   height: 200px;
