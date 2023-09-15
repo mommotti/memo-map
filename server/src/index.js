@@ -1,7 +1,13 @@
 const express = require('express')
 const morgan = require('morgan')
 const helmet = require('helmet')
-const cors = require('cors')
+
+// CORS NORMALE
+//const cors = require('cors')
+
+// PROXY MOMENTANEA CODESANDBOX
+const allowCors = require('allow-cors');
+
 const mongoose = require('mongoose')
 const logs = require('./api/logs')
 require('dotenv').config()
@@ -24,9 +30,22 @@ app.use(helmet())
 app.use(helmet.hidePoweredBy())
 app.use(express.json())
 
-app.use(cors({
-    origin: 'http://localhost:3000'
-}))
+// CORS NORMALE
+//app.use(cors({
+//    origin: 'http://localhost:3000'
+//}))
+
+// PROXY MOMENTANEA CODESANDBOX
+// Use the allow-cors middleware with req and res
+app.use((req, res, next) => {
+     allowCors(req, res, {
+       origin: '*',
+       headers: '*',
+       methods: '*',
+       credentials: '*',
+     });
+     next();
+   });
 
 app.get('/', (req, res) => {
     res.json({
